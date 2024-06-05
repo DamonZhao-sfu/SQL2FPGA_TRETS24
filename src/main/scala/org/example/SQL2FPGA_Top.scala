@@ -6,21 +6,21 @@ import scala.collection.mutable.ListBuffer
 object SQL2FPGA_Top{
   //SQL2FPGA_QConfig
   var qConfig = new SQL2FPGA_QConfig
-  val INPUT_DIR_TPCH  = "/Users/aleclu/dev/tpch-spark/dbgen/tpch_data_01"
-  val OUTPUT_DIR_TPCH = "/Users/aleclu/dev/tpch-spark/dbgen/tpch_data_01"
+  val INPUT_DIR_TPCH  = "/localhdd/hza214/Vitis_Libraries_2020/Vitis_Libraries/database/L2/demos/db_data/sf1"
+  val OUTPUT_DIR_TPCH = "/localhdd/hza214/Vitis_Libraries_2020/"
   val INPUT_DIR_TPCDS = "/Users/aleclu/dev/tpcds-spark/dbgen/tpcds_data_1"
   val OUTPUT_DIR_TPCDS = "/Users/aleclu/dev/tpcds-spark/dbgen/tpcds_data_1"
   qConfig.tpch_queryNum_start = 1
   qConfig.tpch_queryNum_end = 22
-//  qConfig.tpch_queryNum_list = ListBuffer(14, 15) // 3, 13, 15, 18, 20
+  //qConfig.tpch_queryNum_list = ListBuffer(14, 15) // 3, 13, 15, 18, 20
   qConfig.tpcds_queryNum_start = 1
   qConfig.tpcds_queryNum_end = 22
   qConfig.tpcds_queryNum_list = ListBuffer(1) // 1, 2, 3, 5, 6, 7, 8, 9
 
-  qConfig.pure_sw_mode = 1
+  qConfig.pure_sw_mode = 0
   qConfig.query_plan_optimization_enable = "11111"
-  qConfig.scale_factor = 1
-  qConfig.fpgaOverlayVersion = 0 // 0 - 2020 ; 1 - 2022
+  qConfig.scale_factor = 30
+  qConfig.fpgaOverlayVersion = 1 // 0 - 2020 ; 1 - 2022
   var TPCH_or_DS = 0
 
   // Macro defines
@@ -36,7 +36,6 @@ object SQL2FPGA_Top{
   } else {
     qConfig.query_plan_optimization_enable = "11111"
   }
-  qConfig.scale_factor = 30
 
   //----------------------------------------------------------------------------------------------------------------
   // Table column metadata
